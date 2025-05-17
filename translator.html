@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto - IA</title>
 
-    <link rel="stylesheet" href="./css/index.css">
-    <script src="js/pesquisar_gemini.js" defer type="module"></script>
+    <link rel="stylesheet" href="./css/translate.css">
+    <script src="js/pesquisar_tradutor.js" defer type="module"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +20,8 @@
             </div>
             <nav id="menu">
                 <ul>
-                    <li><a class="atual" href="./index.html">Anhanguera GPT</a></li>
-                    <li><a href="./translator.html">Tradutor</a></li>
+                    <li><a href="./index.html">Anhanguera GPT</a></li>
+                    <li><a class="atual" href="./translator.html">Tradutor</a></li>
                 </ul>
             </div>
         </div>
@@ -30,14 +30,32 @@
         <div class="conteudo" id="caixa-pergunta">
             <div id="logo-ia"></div>
             <div id="pergunta-ia">
+                <div id="sel-menu">
+                    <form action="#">
+                        <label for="lang">Idioma de entrada</label>
+                        <select id="lang">
+                            <option value="Inglês">Inglês</option>
+                            <option value="Português">Português</option>
+                        </select>
+                    </form>
+                </div>
                 <form action="">
                     <textarea name="" id="text-pergunta" cols="90" rows="15"></textarea>
                     <div id="buttons">
-                        <input type="button" value="Pesquisar" id="btn-pesquisar">
+                        <input type="button" value="Traduzir" id="btn-pesquisar">
                         <input type="button" value="Limpar" id="btn-limpar">
                     </div>
                 </form>
                 <form>
+                    <div id="sel-menu">
+                    <form action="#">
+                        <label for="lang">Idioma de saída</label>
+                        <select id="lang-out">
+                            <option value="Inglês">Inglês</option>
+                            <option value="Português">Português</option>
+                        </select>
+                    </form>
+                </div>
                     <textarea id="text-resposta" cols="90" rows="10"></textarea>
                 </form>
             </div>

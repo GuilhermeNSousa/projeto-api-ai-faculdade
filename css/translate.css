@@ -1,0 +1,257 @@
+/*Reset CSS*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*Projeto principal*/
+
+header {
+    background-color: #131313;
+    height: 80px;
+    width: 100%;
+}
+
+.conteudo {
+    height: 80px;
+    margin: 0 auto;
+    width: 1080px;
+}
+
+#logo {
+    background-image: url(../imagens/logo.webp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 80px;
+    float: left;
+    margin-left: 15px;
+    width: 100px;
+}
+
+#menu {
+    float: right;
+    width: 300px;
+    height: 80px;
+}
+
+#menu ul {
+    height: 80px;
+    width: 100%;
+}
+
+#menu ul li {
+    color: #86817e;
+    float: right;
+    font-family: "Special Gothic Condensed One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2em;
+    height: 30px;
+    padding-top: 30px;
+    width: 50%;
+}
+
+#menu ul li a {
+    text-decoration: none;
+}
+
+#menu ul li a:visited {
+    color: #86817e;
+    text-decoration: none;
+}
+
+#menu ul li a:hover {
+    color: rgb(255, 102, 0) !important;
+    cursor: pointer;
+}
+
+#menu ul li .atual {
+    color: white !important;
+}
+
+body {
+    background-color: #0A0A0A;
+}
+
+main {
+    width: 100%;
+    height: 1000px;
+    background-color: #0A0A0A;
+}
+
+#caixa-pergunta {
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#caixa-pergunta form label {
+    color: white;
+    font-family: "Special Gothic Condensed One", sans-serif;
+    font-weight: 400;
+    font-size: 1.3em;
+    font-style: normal;
+    margin-right: 5px;
+}
+
+#sel-menu {
+    margin-bottom: 20px;
+}
+
+#sel-menu select {
+    background: rgb(255, 94, 0);
+    border: 2px solid rgb(255, 94, 0);
+    color: white;
+    font-family: "Special Gothic Condensed One", sans-serif;
+    font-weight: 400;
+    font-size: 1.3em;
+    font-style: normal;
+    padding: 2px;
+}
+
+#sel-menu select:focus {
+  background: rgb(255, 102, 0);
+}
+
+#lang option:hover {
+    background-color: rgb(187, 76, 2);;
+}
+
+#logo-ia {
+    background-image: url(../imagens/robo.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    float: left;
+    height: 350px;
+    width: 20%;
+}
+
+#pergunta-ia {
+    float: left;
+    height: 380px;
+    width: 900px;
+}
+
+#pergunta-ia form {
+    margin: 0 auto;
+    width: 80%;
+}
+
+#pergunta-ia form input {
+    font-weight: lighter;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#pergunta-ia form input:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#buttons {
+    display: flex;
+    justify-content: right;
+}
+
+#text-pergunta {
+    background-color: #1E1E1E;
+    border: none;
+    color: white;
+    resize: none;
+    padding: 25px;
+}
+
+#btn-pesquisar {
+    background-color: darkgreen;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-family: "Special Gothic Condensed One", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    height: 35px;
+    width: 150px;
+}
+
+#btn-limpar {
+    background-color: darkred;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-family: "Special Gothic Condensed One", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    height: 35px;
+    width: 150px;
+}
+
+#text-resposta {
+    background-color: #1E1E1E;
+    border: none;
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    resize: none;
+    padding: 25px;
+}
+
+footer {
+    align-items: center;
+    background-color: black;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    width: 100%;
+}
+
+footer p {
+    color: white;
+    display: flex;
+    font-family: "Special Gothic Condensed One", sans-serif;    
+    font-style: normal;
+}

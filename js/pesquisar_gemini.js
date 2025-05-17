@@ -32,6 +32,19 @@ botao_pesquisar.addEventListener("click", async function() {
 
     //Pega a resposta da API e joga dentro do campo de resposta
     const answerAPI = dados.candidates[0].content.parts[0].text;
+
+    console.log(answerAPI);
+
     const resposta = document.getElementById("text-resposta");
-    resposta.innerHTML = answerAPI;
+    resposta.value = answerAPI;
+})
+
+const botao_limpar = document.getElementById("btn-limpar");
+
+botao_limpar.addEventListener("click", function() {
+    const pergunta = document.getElementById("text-pergunta");
+    const resposta = document.getElementById("text-resposta");
+
+    pergunta.value = "";
+    resposta.value = "";
 })
