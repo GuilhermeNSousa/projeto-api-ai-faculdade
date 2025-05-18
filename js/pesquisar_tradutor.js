@@ -60,24 +60,33 @@ lang_output.addEventListener("change", atualizarLangOutput);
 const botao_pesquisar = document.getElementById("btn-pesquisar");
 
 botao_pesquisar.addEventListener("click", async function() {
-    //Recebe o elemento da caixa de texto
-    const text = document.getElementById("text-pergunta");
-
-    //Variáveis com a URL e a chave de acesso da API
-    const url = `https://api.mymemory.translated.net/get?q=${text.value}&langpair=${lang_input}|${lang_out}`;
-    
-    //Faz a requisição da API do Gemini
-    const response = await fetch(url);
-
-    //Recebe os dados da API para utilizarmos no projeto
-    const dados = await response.json();
-
-    console.log(dados);
-
-    const answerAPI = dados.matches[0].translation;
-
     const resposta = document.getElementById("text-resposta");
-    resposta.value = answerAPI;
+
+    if (lang_input == lang_out) {
+        resposta.style.color = "rgb(187, 76, 2)";        
+        resposta.value = "Selecione idiomas diferentes!";
+    } else {
+        //Zera o texto se presente
+        resposta.value = "";
+        resposta.style.color = "white";
+
+        //Recebe o elemento da caixa de texto
+        const text = document.getElementById("text-pergunta");
+
+        //Variáveis com a URL e a chave de acesso da API
+        const url = `https://api.mymemory.translated.net/get?q=${text.value}&langpair=${lang_input}|${lang_out}`;
+        
+        //Faz a requisição da API do Gemini
+        const response = await fetch(url);
+
+        //Recebe os dados da API para utilizarmos no projeto
+        const dados = await response.json();
+
+        const answerAPI = dados.matches[0].translation;
+        console.log(dados);
+
+        resposta.value = answerAPI;
+    }
 })
 // #endregion
 
