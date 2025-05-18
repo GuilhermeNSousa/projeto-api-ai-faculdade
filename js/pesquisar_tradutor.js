@@ -1,59 +1,90 @@
 // #region Verifica o idioma de entrada
-const lang = document.getElementById("lang");
 var lang_input = null;
+const lang = document.getElementById("lang");
 
 document.addEventListener("DOMContentLoaded", function() {
-    const lang = document.getElementById("lang");
    
-    if (lang.value == "Inglês") {
-        lang_input = "en";
-    }
-
-    else if (lang.value == "Português") {
-        lang_input = "pt";
+    switch(lang.value) {
+        case "Inglês":
+            lang_input = "en";
+            break;
+        case "Português":
+            lang_input = "pt";
+            break;
+        case "Espanhol":
+            lang_input = "sp";
+            break;
+        case "Italiano":
+            lang_input = "it";
+            break;
+        default:
+            lang_input = "en";
     }
 });
 
 function atualizarLangInput() {
-    if (lang.value == "Inglês") {
-        lang_input = "en";
-    }
-
-    else if (lang.value == "Português") {
-        lang_input = "pt";
+    switch(lang.value) {
+        case "Inglês":
+            lang_input = "en";
+            break;
+        case "Português":
+            lang_input = "pt";
+            break;
+        case "Espanhol":
+            lang_input = "es";
+            break;
+        case "Italiano":
+            lang_input = "it";
+            break;
     }
 }
 
 lang.addEventListener("change", atualizarLangInput);
+
+
 // #endregion
 
 // #region Verifica o idioma de saída
-const lang_output = document.getElementById("lang-out");
 var lang_out = null;
+const lang_output = document.getElementById("lang-out");
 
 document.addEventListener("DOMContentLoaded", function() {
-    const lang_output = document.getElementById("lang-out");
-   
-    if (lang_output.value == "Inglês") {
-        lang_out = "en";
-    }
-
-    else if (lang_output.value == "Português") {
-        lang_out = "pt";
+    switch(lang_output.value) {
+        case "Inglês":
+            lang_out = "en";
+            break;
+        case "Português":
+            lang_out = "pt";
+            break;
+        case "Espanhol":
+            lang_out = "sp";
+            break;
+        case "Italiano":
+            lang_out = "it";
+            break;
+        default:
+            lang_out = "en";
     }
 });
 
-function atualizarLangOutput() {
-    if (lang_output.value == "Inglês") {
-        lang_out = "en";
-    }
-
-    else if (lang_output.value == "Português") {
-        lang_out = "pt";
+function atualizarLangOutPut() {
+    switch(lang_output.value) {
+        case "Inglês":
+            lang_out = "en";
+            break;
+        case "Português":
+            lang_out = "pt";
+            break;
+        case "Espanhol":
+            lang_out = "es";
+            break;
+        case "Italiano":
+            lang_out = "it";
+            break;
     }
 }
 
-lang_output.addEventListener("change", atualizarLangOutput);
+lang_output.addEventListener("change", atualizarLangOutPut);
 // #endregion
 
 // #region Realiza a tradução
@@ -62,30 +93,37 @@ const botao_pesquisar = document.getElementById("btn-pesquisar");
 botao_pesquisar.addEventListener("click", async function() {
     const resposta = document.getElementById("text-resposta");
 
-    if (lang_input == lang_out) {
+    //Recebe o elemento da caixa de texto
+    const text = document.getElementById("text-pergunta");
+
+    //Resposta caso não haja texto inserido
+    if (text.value == "") {
         resposta.style.color = "rgb(187, 76, 2)";        
-        resposta.value = "Selecione idiomas diferentes!";
+        resposta.value = "Insira um texto para ser traduzido!";
     } else {
-        //Zera o texto se presente
-        resposta.value = "";
-        resposta.style.color = "white";
+        //Resposta caso os idiomas de entrada e saída sejam iguais
+        if (lang_input == lang_out) {
+            resposta.style.color = "rgb(187, 76, 2)";        
+            resposta.value = "Selecione idiomas diferentes!";
+        } else {
+            //Zera o texto se presente
+            resposta.value = "";
+            resposta.style.color = "white";
 
-        //Recebe o elemento da caixa de texto
-        const text = document.getElementById("text-pergunta");
+            //Variáveis com a URL e a chave de acesso da API
+            const url = `https://api.mymemory.translated.net/get?q=${text.value}&langpair=${lang_input}|${lang_out}`;
+            
+            //Faz a requisição da API do Gemini
+            const response = await fetch(url);
 
-        //Variáveis com a URL e a chave de acesso da API
-        const url = `https://api.mymemory.translated.net/get?q=${text.value}&langpair=${lang_input}|${lang_out}`;
-        
-        //Faz a requisição da API do Gemini
-        const response = await fetch(url);
+            //Recebe os dados da API para utilizarmos no projeto
+            const dados = await response.json();
 
-        //Recebe os dados da API para utilizarmos no projeto
-        const dados = await response.json();
+            const answerAPI = dados.matches[0].translation;
+            console.log(dados);
 
-        const answerAPI = dados.matches[0].translation;
-        console.log(dados);
-
-        resposta.value = answerAPI;
+            resposta.value = answerAPI;
+        }
     }
 })
 // #endregion
